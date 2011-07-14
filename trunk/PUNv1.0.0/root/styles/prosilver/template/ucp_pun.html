@@ -1,0 +1,58 @@
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+<h2>{L_TITLE}</h2>
+<div class="panel">
+	<div class="inner"><span class="corners-top"><span></span></span>
+<!-- IF .notes -->
+    <ul class="linklist">
+		<li class="rightside pagination">
+			<!-- IF TOTAL_TOPICS --> {TOTAL_NOTES} <!-- ENDIF -->
+			<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
+		</li>
+	</ul>
+	<ul class="topiclist">
+		<li class="header">
+			<dl class="icon">
+				<dt>{L_NOTES}</dt>
+				<dd class="lastpost">{L_UPDATED}</dd>
+				<dd class="mark">{L_MARK}</dd>
+			</dl>
+		</li>
+	</ul>
+	<ul class="topiclist cplist">
+
+	<!-- BEGIN notes -->
+		<li class="row<!-- IF topicrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
+			<dl class="icon">
+				<dt title="{topicrow.TITLE}">
+					<a href="{topicrow.U_VIEW}" class="topictitle">{topicrow.TITLE}</a>
+                    <br />{L_POST_BY_AUTHOR} {topicrow.AUTHOR} &raquo; {topicrow.DATE}
+				</dt>
+				<dd class="lastpost"><span>{topicrow.LAST_POST_TIME}</span>
+				</dd>
+				<dd class="mark"><input type="checkbox" name="t[{topicrow.NOTE_ID}]" id="t{topicrow.NOTE_ID}" /></dd>
+			</dl>
+		</li>
+	<!-- END topicrow -->
+	</ul>
+	<ul class="linklist">
+		<li class="rightside pagination">
+			<!-- IF TOTAL_TOPICS --> {TOTAL_NOTES} <!-- ENDIF -->
+			<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
+		</li>
+	</ul>
+<!-- ELSE -->
+	<p><strong>{L_NO_NOTES}</strong></p>
+<!-- ENDIF -->
+
+	<span class="corners-bottom"><span></span></span></div>
+</div>
+
+<!-- IF .topicrow or .forumrow -->
+	<fieldset class="display-actions">
+		<input type="submit" name="unwatch" value="{L_UNWATCH_MARKED}" class="button2" />
+		<div><a href="#" onclick="marklist('ucp', 't', true); marklist('ucp', 'f', true); return false;">{L_MARK_ALL}</a> &bull; <a href="#" onclick="marklist('ucp', 't', false); marklist('ucp', 'f', false); return false;">{L_UNMARK_ALL}</a></div>
+		{S_FORM_TOKEN}
+	</fieldset>
+<!-- ENDIF -->
+</form>

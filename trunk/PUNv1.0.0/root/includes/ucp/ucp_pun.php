@@ -63,9 +63,7 @@ class ucp_pun
 				'TITLE'			=> $row['title'],
 				'CREATED_DATE'	=> $user->format_date($row['date']),
 				'LAST_UPDATED'	=> $user->format_date($row['last_updated']),
-				
 				'TEXT'			=> generate_text_for_display($row['text'], $row['bbcode_uid'], $row['bbcode_bitfield'], $bbcode_options),
-				
 				'AUTHOR'		=> get_username_string('full', $user->data['user_id'], $user->data['usename'], $user->data['user_colour']),
 			));
 			$db->sql_freeresult($result);
@@ -81,16 +79,32 @@ class ucp_pun
 				$bbcode_options = (($row['enable_bbcode']) ? OPTION_FLAG_BBCODE : 0) +
 					(($row['enable_smilies']) ? OPTION_FLAG_SMILIES : 0) + 
 					(($row['enable_magic_url']) ? OPTION_FLAG_LINKS : 0);
-
 				$template->assign_block_vars('notes', array(
 					'TITLE'			=> $row['title'],
 					'CREATED_DATE'	=> $user->format_date($row['date']),
 					'LAST_UPDATED'	=> $user->format_date($row['last_updated']),
-					
+					'U_VIEW'		=> append_sid($phpbb_root_path . 'ucp.' . $phpEx, array('i' => 'pun', 'id' => $row['id'])),
 					'AUTHOR'		=> get_username_string('full', $user->data['user_id'], $user->data['usename'], $user->data['user_colour']),
+					'NOTE_ID'		=> $row['id'],
 				));
 			}
 			$db->sql_freeresult($result);
+			
+			// pagination
+			$start   = request_var('start', 0);
+			$limit   = request_var('limit', 25);
+			$sql = 'SELECT COUNT(id) AS count FROM ' . PUN_TABLE . '
+				WHERE pun_user_id = ' . $user->data['user_id'];
+			$result = $db->sql_query($sql);
+			$total_notes = $db->sql_fetchfield('count');
+			$db->sql_freeresult($result);
+			$pag_url = append_sid($phpbb_root_path . 'ucp.' . $phpEx, array('i' => 'pun'));
+			// Assign the pagination variables to the template.
+			$template->assign_vars(array(
+				'PAGINATION'        => generate_pagination($pag_url, $total_notes, $limit, $start),
+				'PAGE_NUMBER'       => on_page($total_notes, $limit, $start),
+				'TOTAL_NOTES'       => ($total_users == 1) ? $user->lang['NOTE'] : sprintf($user->lang['NOTES'], $total_users),
+			));
 		}
 		$template->assign_vars(array(
 			'L_TITLE'	=> $user->lang['UCP_PUN_' . strtoupper($mode)],

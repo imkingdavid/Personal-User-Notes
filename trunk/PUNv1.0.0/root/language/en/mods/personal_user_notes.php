@@ -46,4 +46,11 @@ $lang = array_merge($lang, array(
 	'UCP_PUN_POST'			=> 'Post a Note',
 	
 	'UCP_NO_ID'				=> 'You must specify a valid note ID to view or post a note.',
+	
+	'NOTES'					=> 'Notes',
+	'UPDATED'				=> 'Last Updated',
+	'NO_NOTES'				=> 'You have no notes.',
+	
+	'LIST_NOTE'					=> '1 note',
+	'LIST_NOTES'				=> '%d notes',
 ));
