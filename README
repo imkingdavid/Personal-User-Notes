@@ -1,0 +1,9 @@
+Personal User Notes
+
+A phpBB 3 MOD that allows forum users with the appropriate permissions
+to create personal notes within the UCP, visible only to them. These can
+contain emoticons and bbcode, just like a forum post.
+
+Also, if given permission, users are able to easily, with one click, post
+a note as a new topic into a forum into which the user has topic posting
+access.
