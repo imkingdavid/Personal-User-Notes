@@ -72,7 +72,7 @@ class ucp_pun
 		else
 		{
 			$sql = 'SELECT * FROM ' . PUN_TABLE . '
-				WHERE pun_user_id = ' . $user->data['user_id'];
+				WHERE user_id = ' . $user->data['user_id'];
 			$result = $db->sql_query($sql);
 			while($row = $db->sql_fetchrow($result))
 			{
@@ -94,7 +94,7 @@ class ucp_pun
 			$start   = request_var('start', 0);
 			$limit   = request_var('limit', 25);
 			$sql = 'SELECT COUNT(id) AS count FROM ' . PUN_TABLE . '
-				WHERE pun_user_id = ' . $user->data['user_id'];
+				WHERE user_id = ' . $user->data['user_id'];
 			$result = $db->sql_query($sql);
 			$total_notes = $db->sql_fetchfield('count');
 			$db->sql_freeresult($result);
@@ -103,7 +103,7 @@ class ucp_pun
 			$template->assign_vars(array(
 				'PAGINATION'        => generate_pagination($pag_url, $total_notes, $limit, $start),
 				'PAGE_NUMBER'       => on_page($total_notes, $limit, $start),
-				'TOTAL_NOTES'       => ($total_users == 1) ? $user->lang['NOTE'] : sprintf($user->lang['NOTES'], $total_users),
+				'TOTAL_NOTES'       => ($total_notes == 1) ? $user->lang['NOTE'] : sprintf($user->lang['NOTES'], $total_notes),
 			));
 		}
 		$template->assign_vars(array(
@@ -114,7 +114,7 @@ class ucp_pun
 		);
 
 		// Set desired template
-		$this->tpl_name = 'ucp_pun_' . $mode;
+		$this->tpl_name = 'ucp_pun';
 		$this->page_title = 'UCP_PUN_NOTES_TITLE';
 	}
 }

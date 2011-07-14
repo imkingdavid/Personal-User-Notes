@@ -45,10 +45,10 @@
 	<open src="includes/constants.php">
 		<edit>
 			<find><![CDATA[// Additional tables]]></find>
-			<action type="after-add"><![CDATA[define('PUN_TABLE', $table_prefix . '_pun');]]></action>
+			<action type="after-add"><![CDATA[define('PUN_TABLE', $table_prefix . 'pun');]]></action>
 		</edit>
 	</open>
-	<php-installer>user_notes_install.php</php-installer>
+	<php-installer>pun_install.php</php-installer>
 	<diy-instructions lang="en"><![CDATA[Once all file edits have been done and the SQL install file has been run, enter the ACP and purge the cache and refresh the templates on which this MOD has been installed. Be sure to set the permissions so that users can access and use this MOD.]]>
 	</diy-instructions>
 </action-group>

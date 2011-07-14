@@ -82,11 +82,11 @@ $options = array(
 $versions = array(
 	'1.0.0' => array(
 		'module_add' => array(
-			array('ucp', 'UCP_CAT_PUN'),
+			array('ucp', 0, 'UCP_CAT_PUN'),
 			array('ucp', 'UCP_CAT_PUN', 'UCP_PUN'),
 			array('ucp', 'UCP_PUN', array(
 					'module_basename'		=> 'pun',
-					'modes'					=> array('index'),
+					'modes'					=> array('viewall', 'view', 'post'),
 				),
 			),
 		),
@@ -106,13 +106,12 @@ $versions = array(
 						'date'				=> array('TIMESTAMP', 0),
 						'last_updated'		=> array('TIMESTAMP', 0),
 						'bbcode_uid'		=> array('VCHAR_UNI', ''),
-						'bbcode_bitfield'	=> array('VCHAR_UNI'),
+						'bbcode_bitfield'	=> array('VCHAR_UNI', ''),
 						'enable_bbcode'		=> array('TINT:1', 1),
 						'enable_smilies'	=> array('TINT:1', 1),
 						'enable_magic_url'	=> array('TINT:1', 1),
-						
 					),
-					'PRIMARY_KEY'	=> 'tmm_id',
+					'PRIMARY_KEY'	=> 'id',
 				),
 			),
 		),
