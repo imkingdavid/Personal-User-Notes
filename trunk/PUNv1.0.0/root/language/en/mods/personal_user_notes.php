@@ -46,6 +46,14 @@ $lang = array_merge($lang, array(
 	'UCP_PUN_POST'			=> 'Post a Note',
 	
 	'UCP_NO_ID'				=> 'You must specify a valid note ID to view or post a note.',
+	'ALREADY_POSTED_NOTE'	=> 'You cannot post the same note twice.',
+	'SPECIFY_FORUM_ID'		=> 'You must choose a forum into which to post your note.',
+	'POSTING_FAILED'		=> 'Something went wrong with posting your note. Please try again.',
+	'RETURN_TO_NOTE'		=> 'Return to note',
+	'GO_TO_TOPIC'			=> 'View topic',
+	'GO_BACK'				=> 'Go back',
+	
+	'SELECT_FORUM_EXPLAIN'	=> 'Please select a forum below into which to post your note, and then click submit.',
 	
 	'NOTES'					=> 'Notes',
 	'UPDATED'				=> 'Last Updated',

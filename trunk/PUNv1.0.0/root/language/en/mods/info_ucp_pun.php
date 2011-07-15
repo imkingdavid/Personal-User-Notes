@@ -40,4 +40,5 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'UCP_CAT_PUN'       => 'Notes',
     'UCP_PUN'           => 'Notes',
+	'UCP_CREATE_NOTE'	=> 'Create Note',
 ));

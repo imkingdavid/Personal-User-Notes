@@ -4,57 +4,71 @@
 <h2>{L_TITLE}</h2>
 <div class="panel">
 	<div class="inner"><span class="corners-top"><span></span></span>
-<!-- IF .notes -->
-    <ul class="linklist">
-		<li class="rightside pagination">
-			<!-- IF TOTAL_TOPICS --> {TOTAL_NOTES} <!-- ENDIF -->
-			<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
-		</li>
-	</ul>
-	<ul class="topiclist">
-		<li class="header">
-			<dl class="icon">
-				<dt>{L_NOTES}</dt>
-				<dd class="lastpost">{L_UPDATED}</dd>
-				<dd class="mark">{L_MARK}</dd>
-			</dl>
-		</li>
-	</ul>
-	<ul class="topiclist cplist">
-
-	<!-- BEGIN notes -->
-		<li class="row<!-- IF topicrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
-			<dl class="icon">
-				<dt title="{notes.TITLE}">
-					<a href="{notes.U_VIEW}" class="topictitle">{notes.TITLE}</a>
-                    <br />{L_POST_BY_AUTHOR} {notes.AUTHOR} &raquo; {notes.DATE}
-				</dt>
-				<dd class="lastpost"><span>{notes.LAST_UPDATED}</span>
-				</dd>
-				<dd class="mark"><input type="checkbox" name="t[{topicrow.NOTE_ID}]" id="t{topicrow.NOTE_ID}" /></dd>
-			</dl>
-		</li>
-	<!-- END topicrow -->
-	</ul>
-	<ul class="linklist">
-		<li class="rightside pagination">
-			<!-- IF TOTAL_TOPICS --> {TOTAL_NOTES} <!-- ENDIF -->
-			<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
-		</li>
-	</ul>
-<!-- ELSE -->
-	<p><strong>{L_NO_NOTES}</strong></p>
-<!-- ENDIF -->
-
+	<!-- IF MODE eq "view" -->
+		<div class="postbody">
+			<h3><a href="{U_VIEW}">{TITLE}</a></h3>
+			<p class="author">{MINI_POST_IMG} {L_POSTED} {L_POST_BY_AUTHOR} {AUTHOR} &raquo; {DATE}</p>	
+			<div class="content" id="post_details">
+				{TEXT}
+			</div>
+		</div>
+	<!-- ELSEIF MODE eq "create" -->
+	<!-- ELSEIF MODE eq "post" -->
+		<p>{L_SELECT_FORUM_EXPLAIN}</p>
+		{FORUM_SELECT}<br />
+		<input type="hidden" name="id" value="{ID}" />
+		<input type="submit" name="submit" value="{L_SUBMIT}" />
+	<!-- ELSE -->
+		<!-- IF .notes -->
+			<ul class="linklist">
+				<li class="rightside pagination">
+					<!-- IF TOTAL_NOTES --> {TOTAL_NOTES} <!-- ENDIF -->
+					<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
+				</li>
+			</ul>
+			<ul class="topiclist">
+				<li class="header">
+					<dl class="icon">
+						<dt>{L_NOTES}</dt>
+						<dd class="lastpost">{L_UPDATED}</dd>
+						<dd class="mark">{L_MARK}</dd>
+					</dl>
+				</li>
+			</ul>
+			<ul class="topiclist cplist">
+		
+			<!-- BEGIN notes -->
+				<li class="row<!-- IF topicrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
+					<dl class="icon">
+						<dt title="{notes.TITLE}">
+							<a href="{notes.U_VIEW}" class="topictitle">{notes.TITLE}</a>
+							<br />{L_POST_BY_AUTHOR} {notes.AUTHOR} &raquo; {notes.DATE}
+						</dt>
+						<dd class="lastpost"><span>{notes.LAST_UPDATED}</span>
+						</dd>
+						<dd class="mark"><input type="checkbox" name="t[{topicrow.NOTE_ID}]" id="t{topicrow.NOTE_ID}" /></dd>
+					</dl>
+				</li>
+			<!-- END topicrow -->
+			</ul>
+			<ul class="linklist">
+				<li class="rightside pagination">
+					<!-- IF TOTAL_NOTES --> {TOTAL_NOTES} <!-- ENDIF -->
+					<!-- IF PAGE_NUMBER --><!-- IF PAGINATION --> &bull; <a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> &bull; <span>{PAGINATION}</span><!-- ELSE --> &bull; {PAGE_NUMBER}<!-- ENDIF --><!-- ENDIF -->
+				</li>
+			</ul>
+		<!-- ELSE -->
+			<p><strong>{L_NO_NOTES}</strong></p>
+		<!-- ENDIF -->		
+	<!-- ENDIF -->
 	<span class="corners-bottom"><span></span></span></div>
 </div>
-
-<!-- IF .topicrow or .forumrow -->
-	<fieldset class="display-actions">
-		<input type="submit" name="unwatch" value="{L_UNWATCH_MARKED}" class="button2" />
-		<div><a href="#" onclick="marklist('ucp', 't', true); marklist('ucp', 'f', true); return false;">{L_MARK_ALL}</a> &bull; <a href="#" onclick="marklist('ucp', 't', false); marklist('ucp', 'f', false); return false;">{L_UNMARK_ALL}</a></div>
-		{S_FORM_TOKEN}
-	</fieldset>
-<!-- ENDIF -->
+		<!-- IF .notes -->
+			<fieldset class="display-actions">
+				<input type="submit" name="delete" value="{L_DELETE_MARKED}" class="button2" />
+				<div><a href="#" onclick="marklist('ucp', 't', true); marklist('ucp', 'f', true); return false;">{L_MARK_ALL}</a> &bull; <a href="#" onclick="marklist('ucp', 't', false); marklist('ucp', 'f', false); return false;">{L_UNMARK_ALL}</a></div>
+				{S_FORM_TOKEN}
+			</fieldset>
+		<!-- ENDIF -->
 </form>
 <!-- INCLUDE ucp_footer.html -->

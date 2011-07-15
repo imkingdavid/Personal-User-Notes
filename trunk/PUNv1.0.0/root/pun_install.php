@@ -89,6 +89,12 @@ $versions = array(
 					'modes'					=> array('viewall', 'view', 'post'),
 				),
 			),
+			array('ucp', 'UCP_CAT_PUN', 'UCP_CREATE_NOTE'),
+			array('ucp', 'UCP_CREATE_NOTE', array(
+					'module_basename'		=> 'pun',
+					'modes'					=> array('create'),
+				),
+			),
 		),
 		
 		'permission_add' => array(
@@ -111,6 +117,7 @@ $versions = array(
 						'enable_bbcode'		=> array('TINT:1', 1),
 						'enable_smilies'	=> array('TINT:1', 1),
 						'enable_magic_url'	=> array('TINT:1', 1),
+						'topic_id'			=> array('INT:8', 0),
 					),
 					'PRIMARY_KEY'	=> 'id',
 				),
