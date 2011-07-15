@@ -25,11 +25,11 @@
 	<!-- BEGIN notes -->
 		<li class="row<!-- IF topicrow.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
 			<dl class="icon">
-				<dt title="{topicrow.TITLE}">
-					<a href="{topicrow.U_VIEW}" class="topictitle">{topicrow.TITLE}</a>
-                    <br />{L_POST_BY_AUTHOR} {topicrow.AUTHOR} &raquo; {topicrow.DATE}
+				<dt title="{notes.TITLE}">
+					<a href="{notes.U_VIEW}" class="topictitle">{notes.TITLE}</a>
+                    <br />{L_POST_BY_AUTHOR} {notes.AUTHOR} &raquo; {notes.DATE}
 				</dt>
-				<dd class="lastpost"><span>{topicrow.LAST_POST_TIME}</span>
+				<dd class="lastpost"><span>{notes.LAST_UPDATED}</span>
 				</dd>
 				<dd class="mark"><input type="checkbox" name="t[{topicrow.NOTE_ID}]" id="t{topicrow.NOTE_ID}" /></dd>
 			</dl>
