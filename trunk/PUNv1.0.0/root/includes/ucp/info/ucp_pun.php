@@ -23,6 +23,7 @@ class ucp_pun_info
 				'viewall'		=> array('title' => 'UCP_PUN_VIEWALL', 'auth' => '', 'cat' => array('UCP_PUN')),
 				'view'			=> array('title' => 'UCP_PUN_NOTE', 'auth' => '', 'cat' => array('UCP_PUN')),
 				'post'			=> array('title' => 'UCP_PUN_POST', 'auth' => '', 'cat' => array('UCP_PUN')),
+				'create'		=> array('title' => 'UCP_CREATE_NOTE', 'auth' => '', 'cat' => array('UCP_PUN')),
 			),
 		);
 	}

@@ -218,7 +218,7 @@ class ucp_pun
 		}
 		$template->assign_vars(array(
 			'L_TITLE'	=> $user->lang['UCP_PUN_' . strtoupper($mode)],
-
+			'U_POST_NEW_NOTE'	=> append_sid($phpbb_root_path . 'ucp.' . $phpEx, array('i' => 'pun', 'mode' => 'create')),
 			'S_HIDDEN_FIELDS'	=> $s_hidden_fields,
 			'S_UCP_ACTION'		=> $this->u_action)
 		);

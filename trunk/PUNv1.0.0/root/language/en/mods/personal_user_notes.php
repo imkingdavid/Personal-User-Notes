@@ -44,6 +44,7 @@ $lang = array_merge($lang, array(
 	'UCP_PUN_VIEWALL'		=> 'View Notes',
 	'UCP_PUN_VIEW'			=> 'View Note',
 	'UCP_PUN_POST'			=> 'Post a Note',
+	'UCP_PUN_NEW'			=> 'New Note',
 	
 	'UCP_NO_ID'				=> 'You must specify a valid note ID to view or post a note.',
 	'ALREADY_POSTED_NOTE'	=> 'You cannot post the same note twice.',
