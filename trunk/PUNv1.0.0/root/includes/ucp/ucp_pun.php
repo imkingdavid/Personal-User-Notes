@@ -53,7 +53,7 @@ class ucp_pun
 			// grab the data
 			$sql = 'SELECT * FROM ' . PUN_TABLE . '
 				WHERE user_id = ' . $user->data['user_id'] . '
-					AND id = ' . $id; // $id was cast to integer when it was defined
+					AND id = ' . $id;
 			$result = $db->sql_query($sql);
 			$row = $db->sql_fetchrow($result);
 			
@@ -161,7 +161,17 @@ class ucp_pun
 			// display the form if it hasn't been submitted. Otherwise, do it the note.
 			if ($mode == 'edit' && $id)
 			{
-				
+                // if we're editing, we need to fetch the current information to prefill the form
+			    $sql = 'SELECT * FROM ' . PUN_TABLE . ' WHERE id = ' . $id;
+                $result = $db->sql_query($sql);
+                $row = $db->sql_fetchrow($result);
+                $db->sql_freeresult($result);
+                // make all of the array keys uppercase for use in the template
+                array_walk($row, function(&$value, &$key) {
+                    $key = strtoupper($key);
+                    $value = is_string($value) ? $db->sql_escape($value) : $value;
+                });
+                $template->assign_vars($row);
 			}
 			if ($submit)
 			{
