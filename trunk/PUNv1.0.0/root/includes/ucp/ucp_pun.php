@@ -176,9 +176,9 @@ class ucp_pun
 			if ($submit)
 			{
 				// validate input
-				$title = $db->sql_escape(request_var('title', ''));
-				$date = date();
-				$text = $db->sql_escape(request_var('text', ''));
+				$title = $db->sql_escape(request_var('title', '', true));
+				$date = time();
+				$text = $db->sql_escape(request_var('text', '', true));
 				
 				generate_text_for_storage($text);
 			}
