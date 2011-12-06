@@ -159,7 +159,7 @@ class ucp_pun
 		else if ($mode == 'create' || $mode == 'edit')
 		{
 			// display the form if it hasn't been submitted. Otherwise, do it the note.
-			if ($mode == 'edit' && !$id)
+			if ($mode == 'edit' && $id)
 			{
 				
 			}
