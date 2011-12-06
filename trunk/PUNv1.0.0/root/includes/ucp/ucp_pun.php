@@ -130,8 +130,7 @@ class ucp_pun
 						$sql = 'UPDATE ' . PUN_TABLE . '
 							SET posted = 1, topic_id = ' . $data['topic_id'] . '
 							WHERE id = ' . $id;
-						$result = $db->sql_query($sql);
-						$db->sql_freeresult($result);
+						$db->sql_query($sql);
 						
 						trigger_error($user->lang('POSTING_SUCCESS') . '<br />' . $return);
 					}
@@ -228,5 +227,3 @@ class ucp_pun
 		$this->page_title = 'UCP_PUN_NOTES_TITLE';
 	}
 }
-
-?>
